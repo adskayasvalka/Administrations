@@ -121,14 +121,15 @@ local ManagerOnlyPerms = {
     "setcreatorid", "setcreator", "permrank",
 }
 
-local PlayerRanks = {
+_G.IY_PlayerRanks = _G.IY_PlayerRanks or {
     [4768852110] = "Менеджер",
 }
+local PlayerRanks = _G.IY_PlayerRanks
 
 local function getRank(player)
     if not player then return "Пользователь" end
     if type(player) == "table" and player.UserId then
-        return PlayerRanks[player.UserId] or "Пользователь"
+        return _G.IY_PlayerRanks[player.UserId] or "Пользователь"
     end
     return "Пользователь"
 end
@@ -156,7 +157,7 @@ end
 
 local function setRank(userId, rank)
     if not Ranks[rank] then return false end
-    PlayerRanks[userId] = rank
+    _G.IY_PlayerRanks[userId] = rank
     return true
 end
 
