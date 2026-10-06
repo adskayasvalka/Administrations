@@ -165,6 +165,11 @@ PlayerRanks[4768852110] = "Менеджер"
 -- END RANK SYSTEM
 -- ============================================================
 
+print("[RANK INIT] PlayerRanks после инициализации:")
+for id, rank in pairs(PlayerRanks) do
+    print("   ", id, "=>", rank)
+end
+
 COREGUI = game:GetService("CoreGui")
 if not game:IsLoaded() then
 	local notLoaded = Instance.new("Message")
