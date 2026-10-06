@@ -4983,7 +4983,8 @@ local historyCount = 0
 local split=" "
 local lastBreakTime = 0
 function execCmd(cmdStr,speaker,store)
-	cmdStr = cmdStr:gsub("%s+$","")
+	print("[EXEC DEBUG] hasPermission =", hasPermission, "| getRank =", getRank)   -- ← добавь эту
+    cmdStr = cmdStr:gsub("%s+$","")
 	task.spawn(function()
 		local rawCmdStr = cmdStr
 		cmdStr = string.gsub(cmdStr,"\\\\","%%BackSlash%%")
