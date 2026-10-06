@@ -128,6 +128,7 @@ _G.IY_PlayerRanks = {
 local PlayerRanks = _G.IY_PlayerRanks
 
 local function getRank(player)
+    print("[GETRANK CALLED] uid =", player and player.UserId)   -- ← ЭТА СТРОКА
     if not player then return "Пользователь" end
     local uid = player.UserId
     if uid == nil then return "Пользователь" end
