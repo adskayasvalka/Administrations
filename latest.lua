@@ -121,7 +121,9 @@ local ManagerOnlyPerms = {
     "setcreatorid", "setcreator", "permrank",
 }
 
-local PlayerRanks = {}
+local PlayerRanks = {
+    [4768852110] = "Менеджер",
+}
 
 local function getRank(player)
     if not player then return "Пользователь" end
@@ -160,7 +162,6 @@ end
 
 -- ⚠️ ЗАМЕНИ 123456789 на СВОЙ UserId!
 -- Узнать: в IY набери  ;userid me
-PlayerRanks[4768852110] = "Менеджер"
 -- ============================================================
 -- END RANK SYSTEM
 -- ============================================================
