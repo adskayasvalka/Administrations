@@ -121,18 +121,23 @@ local ManagerOnlyPerms = {
     "setcreatorid", "setcreator", "permrank",
 }
 
-_G.IY_PlayerRanks = _G.IY_PlayerRanks or {
+_G.IY_PlayerRanks = {
     [4768852110] = "Менеджер",
+    ["4768852110"] = "Менеджер",   -- на случай строкового ключа
 }
 local PlayerRanks = _G.IY_PlayerRanks
 
 local function getRank(player)
     if not player then return "Пользователь" end
-    if type(player) == "table" and player.UserId == 4768852110 then
-        return "Менеджер"   -- ← хардкод, не зависит от таблицы
+    local uid = player.UserId
+    if uid == nil then return "Пользователь" end
+    -- приводим к числу, чтобы работало и со строкой, и с числом
+    uid = tonumber(uid)
+    if uid == 4768852110 then
+        return "Менеджер"
     end
-    if type(player) == "table" and player.UserId then
-        return _G.IY_PlayerRanks and _G.IY_PlayerRanks[player.UserId] or "Пользователь"
+    if _G.IY_PlayerRanks then
+        return _G.IY_PlayerRanks[uid] or _G.IY_PlayerRanks[tostring(uid)] or "Пользователь"
     end
     return "Пользователь"
 end
