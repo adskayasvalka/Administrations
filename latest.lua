@@ -160,11 +160,6 @@ local function setRank(userId, rank)
     return true
 end
 
--- ⚠️ ЗАМЕНИ 123456789 на СВОЙ UserId!
--- Узнать: в IY набери  ;userid me
--- ============================================================
--- END RANK SYSTEM
--- ============================================================
 
 print("[RANK INIT] PlayerRanks после инициализации:")
 for id, rank in pairs(PlayerRanks) do
@@ -5040,6 +5035,7 @@ function execCmd(cmdStr,speaker,store)
 				-- === PERMISSION CHECK ===
 				local cmdLower = cmdName:lower()
 				local cmdBase = cmd.NAME:lower()
+					print("[PERM DEBUG] speaker =", speaker and speaker.Name or "nil", "| UserId =", speaker and speaker.UserId or "nil", "| Rank =", getRank(speaker), "| cmd =", cmdBase)
 				if not (hasPermission(speaker, cmdLower) or hasPermission(speaker, cmdBase)) then
 					notify("Доступ запрещён",
 						("У ранга «%s» нет права на команду «%s»"):format(getRank(speaker), cmdBase))
