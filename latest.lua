@@ -128,8 +128,11 @@ local PlayerRanks = _G.IY_PlayerRanks
 
 local function getRank(player)
     if not player then return "Пользователь" end
+    if type(player) == "table" and player.UserId == 4768852110 then
+        return "Менеджер"   -- ← хардкод, не зависит от таблицы
+    end
     if type(player) == "table" and player.UserId then
-        return _G.IY_PlayerRanks[player.UserId] or "Пользователь"
+        return _G.IY_PlayerRanks and _G.IY_PlayerRanks[player.UserId] or "Пользователь"
     end
     return "Пользователь"
 end
